@@ -1,19 +1,25 @@
 package lk.nirmalsakila.newsfeedreader.views;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import lk.nirmalsakila.newsfeedreader.R;
+import lk.nirmalsakila.newsfeedreader.utils.GlobalClass;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SportsFragment extends Fragment {
 
+    GlobalClass globalClass;
 
     public SportsFragment() {
         // Required empty public constructor
@@ -25,8 +31,28 @@ public class SportsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_sports, container, false);
+        globalClass = (GlobalClass)this.getActivity().getApplication();
 
+        HashMap<Integer, String[]> feedSelectorButtons = new HashMap<>();
+        feedSelectorButtons.put(R.id.btnBBCSports, new String[]{"bbc-sports", "BBC Sports"});
+        feedSelectorButtons.put(R.id.btnESPN, new String[]{"espn", "ESPN"});
+        feedSelectorButtons.put(R.id.btnESPNCric, new String[]{"espn-cric-info", "ESPN Cric Info"});
 
+        for (Map.Entry<Integer, String[]> entry : feedSelectorButtons.entrySet()) {
+            int btnId = entry.getKey();
+            final String feedType = entry.getValue()[0];
+            final String feedTitle = entry.getValue()[1];
+
+            rootView.findViewById(btnId).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), NewsFeedActivity.class);
+                    intent.putExtra(globalClass.TAG_SERVICE_TYPE, feedType);
+                    intent.putExtra(globalClass.TAG_SERVICE_TITLE, feedTitle);
+                    SportsFragment.this.startActivity(intent);
+                }
+            });
+        }
 
         return rootView;
     }

@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import lk.nirmalsakila.newsfeedreader.R;
 import lk.nirmalsakila.newsfeedreader.utils.GlobalClass;
 
@@ -30,17 +33,24 @@ public class NewsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
         globalClass = (GlobalClass)this.getActivity().getApplication();
 
-        
+        HashMap<Integer,String[]>  feedSelectorButtons = new HashMap<>();
+        feedSelectorButtons.put(R.id.btnCNNNews,new String[]{"cnn","CNN News"});
 
-        rootView.findViewById(R.id.btnCNNNews).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), NewsFeedActivity.class);
-                intent.putExtra(globalClass.TAG_SERVICE_TYPE, "cnn");
-                intent.putExtra(globalClass.TAG_SERVICE_TITLE, "CNN News");
-                NewsFragment.this.startActivity(intent);
-            }
-        });
+        for (Map.Entry<Integer,String[]> entry : feedSelectorButtons.entrySet()){
+            int btnId = entry.getKey();
+            final String feedType = entry.getValue()[0];
+            final String feedTitle = entry.getValue()[1];
+
+            rootView.findViewById(btnId).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), NewsFeedActivity.class);
+                    intent.putExtra(globalClass.TAG_SERVICE_TYPE, feedType);
+                    intent.putExtra(globalClass.TAG_SERVICE_TITLE, feedTitle);
+                    NewsFragment.this.startActivity(intent);
+                }
+            });
+        }
 
         return rootView;
     }

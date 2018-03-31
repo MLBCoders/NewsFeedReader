@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.NewsFragment">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/btnCNNNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/feed_selector_btn_margin"
+        android:layout_weight="1"
+        android:elevation="@dimen/feed_selector_btn_elevation"
+        app:cardCornerRadius="@dimen/feed_selector_btn_radius">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorCNN"
+            android:padding="@dimen/feed_selector_btn_image_padding_landscape"
+            android:src="@drawable/logo_cnn" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/btnBBCNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/feed_selector_btn_margin"
+        android:layout_weight="1"
+        android:elevation="@dimen/feed_selector_btn_elevation"
+        app:cardCornerRadius="@dimen/feed_selector_btn_radius">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBBC"
+            android:padding="@dimen/feed_selector_btn_image_padding_landscape"
+            android:src="@drawable/logo_bbc_news_white" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/btnABCNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/feed_selector_btn_margin"
+        android:layout_weight="1"
+        android:elevation="@dimen/feed_selector_btn_elevation"
+        app:cardCornerRadius="@dimen/feed_selector_btn_radius">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBlack"
+            android:padding="15dp"
+            android:src="@drawable/logo_abc_news_white" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/btnNews24"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/feed_selector_btn_margin"
+        android:layout_weight="1"
+        android:elevation="@dimen/feed_selector_btn_elevation"
+        app:cardCornerRadius="@dimen/feed_selector_btn_radius">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:padding="15dp"
+            android:src="@drawable/logo_news_24_landscape" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/feed_selector_btn_margin"
+        android:layout_weight="1"
+        android:elevation="@dimen/feed_selector_btn_elevation"
+        app:cardCornerRadius="@dimen/feed_selector_btn_radius">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:padding="15dp"
+            android:src="@drawable/logo_new_york_times" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/feed_selector_btn_margin"
+        android:layout_weight="1"
+        android:elevation="@dimen/feed_selector_btn_elevation"
+        app:cardCornerRadius="@dimen/feed_selector_btn_radius">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+            android:src="@drawable/logo_yahoo_news" />
+    </android.support.v7.widget.CardView>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="feed_selector_btn_elevation">10dp</dimen>
+    <dimen name="feed_selector_btn_radius">20dp</dimen>
+    <dimen name="feed_selector_btn_margin">5dp</dimen>
+    <dimen name="feed_selector_btn_image_padding">40dp</dimen>
+    <dimen name="feed_selector_btn_image_padding_landscape">15dp</dimen>
+</resources>

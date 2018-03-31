@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">News Feed Reader</string>
+    <string name="title_activity_feed_selector">Feed Selector</string>
+    <string name="title_activity_news_feed">News Feed</string>
+    <string name="tab_text_1">News</string>
+    <string name="tab_text_2">Sports</string>
+    <string name="tab_text_3">Other</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="news_author_format">By %1$s</string>
+
+    <string name="settings_app_theme_key">AppThemeKey</string>
+    <string name="settings_app_theme_title">App Theme</string>
+    <string name="settings_app_theme_summary">Select preferred app theme</string>
+    <string name="settings_dark_theme_enabled_key">DarkThemeEnabled</string>
+
+    <string name="settings_data_saver_key">DataSaverKey</string>
+    <string name="settings_data_saver_title">Data Saver</string>
+    <string name="settings_data_saver_summary">Change media download settings</string>
+
+    <string name="settings_open_links_key">OpenLinksKey</string>
+    <string name="settings_open_links_title">Open Links in Default Browser</string>
+    <string name="settings_open_links_summary">Open Links in In-App Browser Or in Default Browser</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="download">Download</string>
+
+    <string name="error_network_connection">Internet disconnected. Please try after connecting to internet.</string>
+</resources>

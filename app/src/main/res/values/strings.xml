@@ -28,4 +28,23 @@
     <string name="download">Download</string>
 
     <string name="error_network_connection">Internet disconnected. Please try after connecting to internet.</string>
+
+    <!--Slide 1 Title and Description-->
+    <string name="slide_1_title">Business</string>
+    <string name="slide_1_desc">The way of reaching the goals of your business life!</string>
+
+    <!--Slide 2 Title and Description-->
+    <string name="slide_2_title">Sport</string>
+    <string name="slide_2_desc">The easiest way to follow your favorite sports!</string>
+
+    <!--Slide 3 Title and Description-->
+    <string name="slide_3_title">Technology</string>
+    <string name="slide_3_desc">To know what the citizen is move on!</string>
+
+    <!--Slide 4 Title and Description-->
+    <string name="slide_4_title">Health</string>
+    <string name="slide_4_desc">Health tips to keep you fit and fine!</string>
+
+    <string name="my_preference">"MyPref"</string>
+    <string name="my_preference_key">"MyPrefKey"</string>
 </resources>

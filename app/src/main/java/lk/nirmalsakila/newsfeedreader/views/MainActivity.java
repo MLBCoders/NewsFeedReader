@@ -141,6 +141,8 @@ public class MainActivity extends AppCompatActivity {
                 return new NewsFragment();
             }else if(position==1){
                 return new SportsFragment();
+            }else if(position==2) {
+                return new OthersFragment();
             }else{
                 return PlaceholderFragment.newInstance(position + 1);
             }

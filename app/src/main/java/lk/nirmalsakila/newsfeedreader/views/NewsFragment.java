@@ -30,6 +30,8 @@ public class NewsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
         globalClass = (GlobalClass)this.getActivity().getApplication();
 
+        
+
         rootView.findViewById(R.id.btnCNNNews).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

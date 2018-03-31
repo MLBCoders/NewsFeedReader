@@ -6,10 +6,10 @@ import java.util.List;
  * Created by user on 3/17/2018.
  */
 
-public class NewsSet {
+public class NewsSetModel {
     String status;
     String totalResults;
-    List<News> articles;
+    List<NewsModel> articles;
 
     public String getStatus() {
         return status;
@@ -19,7 +19,7 @@ public class NewsSet {
         return totalResults;
     }
 
-    public List<News> getArticles() {
+    public List<NewsModel> getArticles() {
         return articles;
     }
 }

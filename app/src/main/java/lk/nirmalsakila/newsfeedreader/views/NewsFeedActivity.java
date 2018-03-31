@@ -29,8 +29,8 @@ import java.util.List;
 
 import lk.nirmalsakila.newsfeedreader.R;
 import lk.nirmalsakila.newsfeedreader.adapters.NewsFeedAdapter;
-import lk.nirmalsakila.newsfeedreader.models.News;
-import lk.nirmalsakila.newsfeedreader.models.NewsSet;
+import lk.nirmalsakila.newsfeedreader.models.NewsModel;
+import lk.nirmalsakila.newsfeedreader.models.NewsSetModel;
 import lk.nirmalsakila.newsfeedreader.utils.GlobalClass;
 
 public class NewsFeedActivity extends AppCompatActivity {
@@ -40,7 +40,7 @@ public class NewsFeedActivity extends AppCompatActivity {
 
     private SwipeRefreshLayout newsFeedSwipeRefreshLayout;
     private RecyclerView newsFeedRecyclerView;
-    List<News> newsList = new ArrayList<>();
+    List<NewsModel> newsModelList = new ArrayList<>();
 
     GlobalClass globalClass;
     Snackbar snackBar;
@@ -70,7 +70,7 @@ public class NewsFeedActivity extends AppCompatActivity {
         gson = gsonBuilder.create();
 
         String service = getIntent().getStringExtra(globalClass.TAG_SERVICE_TYPE);
-        endpoint = getServiceEndpoint(service, "everything");
+        endpoint = getServiceEndpoint(service);
         Log.d(globalClass.TAG,"Service endpoint : " + endpoint);
 
         newsFeedSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -81,8 +81,8 @@ public class NewsFeedActivity extends AppCompatActivity {
         });
     }
 
-    private String getServiceEndpoint(String serviceType, String feedType) {
-        return "https://newsapi.org/v2/" + feedType + "?sources=" + serviceType + "&apiKey=1c8530ec3214460bbfc19f8db75c28bb";
+    private String getServiceEndpoint(String serviceType) {
+        return "https://newsapi.org/v2/" + "everything" + "?sources=" + serviceType + "&apiKey=1c8530ec3214460bbfc19f8db75c28bb";
     }
 
     private void fetchPosts(String ENDPOINT) {
@@ -102,10 +102,10 @@ public class NewsFeedActivity extends AppCompatActivity {
             Log.i(globalClass.TAG, response);
 
             Log.i(globalClass.TAG, "NewsList fetching started ");
-            NewsSet newsSet = gson.fromJson(response, NewsSet.class);
-            Log.i(globalClass.TAG, "NewsList ==> Status : " + newsSet.getStatus());
-            newsList = newsSet.getArticles();
-            newsFeedRecyclerView.setAdapter(new NewsFeedAdapter(newsList, NewsFeedActivity.this.getApplicationContext()));
+            NewsSetModel newsSetModel = gson.fromJson(response, NewsSetModel.class);
+            Log.i(globalClass.TAG, "NewsList ==> Status : " + newsSetModel.getStatus());
+            newsModelList = newsSetModel.getArticles();
+            newsFeedRecyclerView.setAdapter(new NewsFeedAdapter(newsModelList, NewsFeedActivity.this.getApplicationContext()));
             newsFeedSwipeRefreshLayout.setRefreshing(false);
         }
     };
@@ -114,8 +114,7 @@ public class NewsFeedActivity extends AppCompatActivity {
         @Override
         public void onErrorResponse(VolleyError error) {
             Log.e(globalClass.TAG, "ERROR : " + error.toString());
-//            Toast.makeText(getApplication(), getString(R.string.error_network_connection), Toast.LENGTH_SHORT)
-//                    .show();
+
             snackBar = Snackbar.make(findViewById(R.id.activity_news_feed), getString(R.string.error_network_connection), Snackbar.LENGTH_INDEFINITE);
 
             snackBar.setAction("Connect", new View.OnClickListener() {

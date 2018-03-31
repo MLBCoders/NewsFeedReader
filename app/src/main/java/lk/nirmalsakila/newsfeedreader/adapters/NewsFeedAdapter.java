@@ -24,18 +24,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import lk.nirmalsakila.newsfeedreader.R;
-import lk.nirmalsakila.newsfeedreader.models.News;
+import lk.nirmalsakila.newsfeedreader.models.NewsModel;
 import lk.nirmalsakila.newsfeedreader.utils.GlobalClass;
 
 public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFeedViewHolder> {
 
     GlobalClass globalClass;
 
-    private static List<News> mDataSet;
+    private static List<NewsModel> mDataSet;
 
     public static final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
     CustomTabsClient mClient;
@@ -43,7 +42,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
     private static CustomTabsServiceConnection mCustomTabsServiceConnection;
     private static CustomTabsIntent customTabsIntent;
 
-    public NewsFeedAdapter(List<News> mDataSet, Context mContext) {
+    public NewsFeedAdapter(List<NewsModel> mDataSet, Context mContext) {
         this.mDataSet = mDataSet;
 
         globalClass = (GlobalClass) mContext.getApplicationContext();
@@ -138,24 +137,24 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
 
     @Override
     public void onBindViewHolder(NewsFeedViewHolder holder, int position) {
-        final News news = mDataSet.get(position);
+        final NewsModel newsModel = mDataSet.get(position);
         Context context = holder.getNewsView().getContext();
 
-        holder.getTxtNewsTitle().setText(news.getTitle());
-        holder.getTxtNewsDescription().setText(news.getDescription());
-        if (news.getPublishedAt() != null && !TextUtils.isEmpty(news.getPublishedAt().toString())) {
-            String date = DateFormat.getDateTimeInstance().format(news.getPublishedAt());
+        holder.getTxtNewsTitle().setText(newsModel.getTitle());
+        holder.getTxtNewsDescription().setText(newsModel.getDescription());
+        if (newsModel.getPublishedAt() != null && !TextUtils.isEmpty(newsModel.getPublishedAt().toString())) {
+            String date = DateFormat.getDateTimeInstance().format(newsModel.getPublishedAt());
             holder.getTxtNewsDateTime().setText(date);
         }else{
             holder.getTxtNewsDateTime().setVisibility(View.GONE);
         }
-        if(news.getAuthor() != null){
-            holder.getTxtNewsAuthor().setText(context.getString(R.string.news_author_format,news.getAuthor()));
+        if(newsModel.getAuthor() != null){
+            holder.getTxtNewsAuthor().setText(context.getString(R.string.news_author_format, newsModel.getAuthor()));
         }else{
             holder.getTxtNewsAuthor().setVisibility(View.GONE);
         }
 
-        downloadAndLoadImageToImageView(holder, news.getUrlToImage());
+        downloadAndLoadImageToImageView(holder, newsModel.getUrlToImage());
         holder.getBtnNewsImageDownload().setVisibility(View.GONE);
     }
 

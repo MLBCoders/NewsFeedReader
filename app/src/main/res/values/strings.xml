@@ -45,6 +45,25 @@
     <string name="slide_4_title">Health</string>
     <string name="slide_4_desc">Health tips to keep you fit and fine!</string>
 
-    <string name="my_preference">"MyPref"</string>
-    <string name="my_preference_key">"MyPrefKey"</string>
+    <string name="my_preference">WelcomeScreen</string>
+    <string name="my_preference_key">WelcomeScreenKey"</string>
+
+    <string name="about_title">About</string>
+    <string name="about_desc">
+        NOTE: Please note that all the information presented in this application are receiving from Original News Sites and NewsAPI Site, So those can be sometimes inaccurate which is beyond the control of the app developer
+        \n\n
+        General Information:
+        \n
+        CTSE Android App Development
+        Group No: 10
+        \n\n
+        Developers:
+        \n
+        Pasindu Nirmal - IT15054128
+        Sakila Dissanayake - IT15027498
+        \n\n
+        App Version: 1.0
+
+    </string>
+    <string name="action_about">About</string>
 </resources>

@@ -36,7 +36,7 @@ public class OthersFragment extends Fragment {
 
         HashMap<Integer, String[]> feedSelectorButtons = new HashMap<>();
         feedSelectorButtons.put(R.id.btnEngadget, new String[]{"engadget", "ENGADGET"});
-        feedSelectorButtons.put(R.id.btnMedicalNewsToday, new String[]{"medical-news-today", "Medical NewsModel Today"});
+        feedSelectorButtons.put(R.id.btnMedicalNewsToday, new String[]{"medical-news-today", "Medical News Today"});
 
         for (Map.Entry<Integer, String[]> entry : feedSelectorButtons.entrySet()) {
             int btnId = entry.getKey();

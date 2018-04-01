@@ -34,7 +34,11 @@ public class NewsFragment extends Fragment {
         globalClass = (GlobalClass)this.getActivity().getApplication();
 
         HashMap<Integer,String[]>  feedSelectorButtons = new HashMap<>();
-        feedSelectorButtons.put(R.id.btnCNNNews,new String[]{"cnn","CNN NewsModel"});
+        feedSelectorButtons.put(R.id.btnCNNNews,new String[]{"cnn","CNN News"});
+        feedSelectorButtons.put(R.id.btnBBCNews,new String[]{"bbc-news","BBC News"});
+        feedSelectorButtons.put(R.id.btnABCNews,new String[]{"abc-news","ABC News"});
+        feedSelectorButtons.put(R.id.btnNewYorkTimes,new String[]{"the-new-york-times","The New York Times"});
+        feedSelectorButtons.put(R.id.btnNews24,new String[]{"news24","News 24"});
 
         for (Map.Entry<Integer,String[]> entry : feedSelectorButtons.entrySet()){
             int btnId = entry.getKey();

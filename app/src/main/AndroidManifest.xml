@@ -10,23 +10,23 @@
         android:icon="@mipmap/ic_launcher_news_square"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_news_circle"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeDark.NoActionBar"
-        android:screenOrientation="portrait">
-        <activity
-            android:name=".views.MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        android:theme="@style/AppThemeDark.NoActionBar">
+        <activity android:name=".views.MainActivity">
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".views.NewsFeedActivity"
-            android:parentActivityName=".views.MainActivity"
-            android:label="@string/title_activity_news_feed" />
-
-        <activity android:name=".views.WelcomeActivity"/>
+            android:label="@string/title_activity_news_feed"
+            android:parentActivityName=".views.MainActivity" />
+        <activity android:name=".views.WelcomeActivity" />
         <activity android:name=".views.WelcomeScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +34,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".views.AboutActivity"></activity>
     </application>
 
 </manifest>

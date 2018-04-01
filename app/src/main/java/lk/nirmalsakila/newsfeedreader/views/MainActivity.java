@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,14 +41,18 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
     GlobalClass globalClass;
+    boolean darkThemeEnabled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         globalClass = (GlobalClass)this.getApplication();
+        globalClass.setGlobalApplicationContext(this.getApplicationContext());
+        setTheme(globalClass.getAppThemeId());
+        darkThemeEnabled = globalClass.isDarkThemeEnabled();
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setPopupTheme(R.style.AppTheme_PopupOverlay);
         setSupportActionBar(toolbar);
@@ -83,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+            intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT,SettingsActivity.GeneralPreferenceFragment.class.getName());
+            intent.putExtra(SettingsActivity.EXTRA_NO_HEADERS,true);
+            startActivity(intent);
             return true;
         }else if (id == R.id.action_about) {
             Intent intent = new Intent(MainActivity.this,AboutActivity.class);
@@ -157,6 +166,16 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             // Show 3 total pages.
             return 3;
+        }
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        Log.d("FEED","ON POST RESUME");
+        boolean nowDarkThemeEnabled = globalClass.isDarkThemeEnabled();
+        if(darkThemeEnabled!= nowDarkThemeEnabled){
+            MainActivity.this.recreate();
         }
     }
 }

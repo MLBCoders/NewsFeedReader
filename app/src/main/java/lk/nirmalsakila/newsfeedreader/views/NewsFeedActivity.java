@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -45,13 +46,15 @@ public class NewsFeedActivity extends AppCompatActivity {
     GlobalClass globalClass;
     Snackbar snackBar;
     String endpoint;
+    boolean darkThemeEnabled = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        globalClass = (GlobalClass)this.getApplication();
+        setTheme(globalClass.getAppThemeId());
+        darkThemeEnabled = globalClass.isDarkThemeEnabled();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed);
-
-
-        globalClass = (GlobalClass) this.getApplication();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setPopupTheme(R.style.AppTheme_PopupOverlay);
@@ -136,6 +139,10 @@ public class NewsFeedActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        boolean nowDarkThemeEnabled = globalClass.isDarkThemeEnabled();
+        if(darkThemeEnabled!= nowDarkThemeEnabled){
+            NewsFeedActivity.this.recreate();
+        }
         fetchPosts(endpoint);
     }
     @Override
@@ -145,4 +152,26 @@ public class NewsFeedActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(NewsFeedActivity.this,SettingsActivity.class);
+            intent.putExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT,SettingsActivity.GeneralPreferenceFragment.class.getName());
+            intent.putExtra(SettingsActivity.EXTRA_NO_HEADERS,true);
+            startActivity(intent);
+            return true;
+        }else if (id == R.id.action_about) {
+            Intent intent = new Intent(NewsFeedActivity.this,AboutActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

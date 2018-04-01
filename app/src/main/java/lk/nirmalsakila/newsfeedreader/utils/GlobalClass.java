@@ -3,6 +3,7 @@ package lk.nirmalsakila.newsfeedreader.utils;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import lk.nirmalsakila.newsfeedreader.R;
 
@@ -31,7 +32,9 @@ public class GlobalClass extends Application {
 
     public void setSharedPreferences(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
-
+        darkThemeEnabled = sharedPreferences.getBoolean(KEY_DARK_THEME_ENABLED,false);
+        dataSaverEnabled = sharedPreferences.getBoolean(KEY_DATA_SAVER,false);
+        linkOpenInDefaultBrowser = sharedPreferences.getBoolean(KEY_OPEN_LINKS,false);
     }
 
     public Context getGlobalApplicationContext() {
@@ -69,5 +72,15 @@ public class GlobalClass extends Application {
 
     public void setLinkOpenInDefaultBrowser(boolean linkOpenInDefaultBrowser) {
         this.linkOpenInDefaultBrowser = linkOpenInDefaultBrowser;
+    }
+
+    public int getAppThemeId() {
+        if (isDarkThemeEnabled()) {
+            appThemeId = R.style.AppThemeDark_NoActionBar;
+        } else {
+            appThemeId = R.style.AppTheme_NoActionBar;
+        }
+        Log.d(TAG, "App theme : " + appThemeId);
+        return appThemeId;
     }
 }

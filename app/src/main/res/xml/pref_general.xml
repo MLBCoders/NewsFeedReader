@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/settings_dark_theme_enabled_key"
+        android:summary="@string/settings_dark_theme_enabled_summary_off"
+        android:title="@string/settings_dark_theme_enabled_title" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/settings_data_saver_key"
+        android:summary="@string/settings_data_saver_summary_off"
+        android:title="@string/settings_data_saver_title" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/settings_open_links_key"
+        android:summary="@string/settings_open_links_summary_off"
+        android:title="@string/settings_open_links_title" />
+
+
+</PreferenceScreen>

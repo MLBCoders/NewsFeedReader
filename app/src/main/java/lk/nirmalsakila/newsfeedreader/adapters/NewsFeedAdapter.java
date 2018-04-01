@@ -42,8 +42,8 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
     private static CustomTabsServiceConnection mCustomTabsServiceConnection;
     private static CustomTabsIntent customTabsIntent;
 
-    public NewsFeedAdapter(List<NewsModel> mDataSet, Context mContext) {
-        this.mDataSet = mDataSet;
+    public NewsFeedAdapter(List<NewsModel> pDataSet, Context mContext) {
+        mDataSet = pDataSet;
 
         globalClass = (GlobalClass) mContext.getApplicationContext();
 
@@ -136,7 +136,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
     }
 
     @Override
-    public void onBindViewHolder(NewsFeedViewHolder holder, int position) {
+    public void onBindViewHolder(final NewsFeedViewHolder holder, int position) {
         final NewsModel newsModel = mDataSet.get(position);
         Context context = holder.getNewsView().getContext();
 
@@ -154,8 +154,18 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
             holder.getTxtNewsAuthor().setVisibility(View.GONE);
         }
 
-        downloadAndLoadImageToImageView(holder, newsModel.getUrlToImage());
-        holder.getBtnNewsImageDownload().setVisibility(View.GONE);
+        if (globalClass.isDataSaverEnabled()){
+            holder.getBtnNewsImageDownload().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    downloadAndLoadImageToImageView(holder,newsModel.getUrlToImage());
+                    holder.getBtnNewsImageDownload().setVisibility(View.GONE);
+                }
+            });
+        }else{
+            downloadAndLoadImageToImageView(holder,newsModel.getUrlToImage());
+            holder.getBtnNewsImageDownload().setVisibility(View.GONE);
+        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package lk.nirmalsakila.newsfeedreader.adapters;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -32,11 +33,11 @@ import lk.nirmalsakila.newsfeedreader.utils.GlobalClass;
 
 public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFeedViewHolder> {
 
-    GlobalClass globalClass;
+    static GlobalClass globalClass;
 
     private static List<NewsModel> mDataSet;
 
-    public static final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
+    private static final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
     CustomTabsClient mClient;
     private static CustomTabsSession mCustomTabsSession;
     private static CustomTabsServiceConnection mCustomTabsServiceConnection;
@@ -79,7 +80,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
         private final Button btnNewsImageDownload;
         private View newsView;
 
-        public NewsFeedViewHolder(final View itemView) {
+        NewsFeedViewHolder(final View itemView) {
             super(itemView);
             newsView = itemView;
 
@@ -114,7 +115,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
             return btnNewsImageDownload;
         }
 
-        public View getNewsView() {
+        View getNewsView() {
             return newsView;
         }
 
@@ -183,13 +184,19 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
     }
 
     private static void goToUrl(Context context, String url) {
-        customTabsIntent.launchUrl(context, Uri.parse(url));
+        if(globalClass.isLinkOpenInDefaultBrowser()){
+            Uri uriUrl = Uri.parse(url);
+            Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+            context.startActivity(launchBrowser);
+        }else{
+            customTabsIntent.launchUrl(context, Uri.parse(url));
+        }
     }
 
 
     //    http://corochann.com/convert-between-bitmap-and-drawable-313.html
-    public Bitmap drawableToBitmap(Drawable drawable) {
-        Bitmap bitmap = null;
+    private Bitmap drawableToBitmap(Drawable drawable) {
+        Bitmap bitmap ;
 
         if (drawable instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;

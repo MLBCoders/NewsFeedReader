@@ -54,6 +54,26 @@ public class OthersFragment extends Fragment {
             });
         }
 
+        rootView.findViewById(R.id.btnAndroidAuthority).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RssFeedActivity.class);
+                intent.putExtra(globalClass.TAG_SERVICE_TYPE, "http://feed.androidauthority.com/");
+                intent.putExtra(globalClass.TAG_SERVICE_TITLE, "Android Authority");
+                OthersFragment.this.startActivity(intent);
+            }
+        });
+
+        rootView.findViewById(R.id.btnPhoneArena).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RssFeedActivity.class);
+                intent.putExtra(globalClass.TAG_SERVICE_TYPE, "http://feeds.feedburner.com/PhoneArena-LatestNews");
+                intent.putExtra(globalClass.TAG_SERVICE_TITLE, "Phone Arena");
+                OthersFragment.this.startActivity(intent);
+            }
+        });
+
         return rootView;
     }
 

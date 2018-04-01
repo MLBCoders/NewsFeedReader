@@ -49,19 +49,6 @@
                 android:layout_marginEnd="4dp"
                 android:layout_marginStart="5dp"
                 android:textStyle="normal"/>
-
-            <!--<TextView-->
-                <!--android:text="link"-->
-                <!--android:id="@+id/txtRssLink"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textSize="12sp"-->
-                <!--android:layout_marginBottom="4dp"-->
-                <!--android:layout_marginEnd="4dp"-->
-                <!--android:layout_marginStart="5dp"-->
-                <!--android:textStyle="normal"-->
-                <!--android:textColor="@color/colorPrimary"/>-->
-
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

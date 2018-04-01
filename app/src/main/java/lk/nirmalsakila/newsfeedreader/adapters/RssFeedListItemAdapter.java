@@ -2,6 +2,7 @@ package lk.nirmalsakila.newsfeedreader.adapters;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
@@ -28,7 +29,7 @@ import lk.nirmalsakila.newsfeedreader.utils.GlobalClass;
 
 public class RssFeedListItemAdapter extends RecyclerView.Adapter<RssFeedListItemAdapter.FeedModelViewHolder> {
     private static List<Item> mRssFeedModels;
-    GlobalClass globalClass;
+    static GlobalClass globalClass;
 
     public static final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
     CustomTabsClient mClient;
@@ -91,7 +92,13 @@ public class RssFeedListItemAdapter extends RecyclerView.Adapter<RssFeedListItem
 
 
     private static void goToUrl(Context context, String url) {
-        customTabsIntent.launchUrl(context, Uri.parse(url));
+        if(globalClass.isLinkOpenInDefaultBrowser()){
+            Uri uriUrl = Uri.parse(url);
+            Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+            context.startActivity(launchBrowser);
+        }else{
+            customTabsIntent.launchUrl(context, Uri.parse(url));
+        }
     }
 
     @Override
@@ -103,7 +110,6 @@ public class RssFeedListItemAdapter extends RecyclerView.Adapter<RssFeedListItem
         String date = DateFormat.getDateTimeInstance().format(rssFeedModel.getPubDate());
         ((TextView)holder.rssFeedView.findViewById(R.id.txtRssPubDate)).setText(date);
         ((TextView)holder.rssFeedView.findViewById(R.id.txtRssContent)).setText(rssFeedModel.getDescription());
-//        ((TextView)holder.rssFeedView.findViewById(R.id.txtRssLink)).setText(rssFeedModel.getLink());
     }
 
     @Override
@@ -113,7 +119,7 @@ public class RssFeedListItemAdapter extends RecyclerView.Adapter<RssFeedListItem
 
     //    http://corochann.com/convert-between-bitmap-and-drawable-313.html
     public Bitmap drawableToBitmap(Drawable drawable) {
-        Bitmap bitmap = null;
+        Bitmap bitmap ;
 
         if (drawable instanceof BitmapDrawable) {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;

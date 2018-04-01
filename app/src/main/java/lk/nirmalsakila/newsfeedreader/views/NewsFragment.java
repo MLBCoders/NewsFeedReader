@@ -37,7 +37,7 @@ public class NewsFragment extends Fragment {
         feedSelectorButtons.put(R.id.btnCNNNews,new String[]{"cnn","CNN News"});
         feedSelectorButtons.put(R.id.btnBBCNews,new String[]{"bbc-news","BBC News"});
         feedSelectorButtons.put(R.id.btnABCNews,new String[]{"abc-news","ABC News"});
-        feedSelectorButtons.put(R.id.btnNewYorkTimes,new String[]{"the-new-york-times","The New York Times"});
+//        feedSelectorButtons.put(R.id.btnNewYorkTimes,new String[]{"the-new-york-times","The New York Times"});
         feedSelectorButtons.put(R.id.btnNews24,new String[]{"news24","News 24"});
 
         for (Map.Entry<Integer,String[]> entry : feedSelectorButtons.entrySet()){
@@ -55,6 +55,16 @@ public class NewsFragment extends Fragment {
                 }
             });
         }
+
+        rootView.findViewById(R.id.btnNewYorkTimes).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RssFeedActivity.class);
+                intent.putExtra(globalClass.TAG_SERVICE_TYPE, "http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml");
+                intent.putExtra(globalClass.TAG_SERVICE_TITLE, "The New York Times");
+                NewsFragment.this.startActivity(intent);
+            }
+        });
 
         return rootView;
     }

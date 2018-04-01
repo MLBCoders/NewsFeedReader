@@ -26,6 +26,10 @@
             android:name=".views.NewsFeedActivity"
             android:label="@string/title_activity_news_feed"
             android:parentActivityName=".views.MainActivity" />
+        <activity
+            android:name=".views.RssFeedActivity"
+            android:label="@string/title_activity_news_feed"
+            android:parentActivityName=".views.MainActivity" />
         <activity android:name=".views.WelcomeActivity" />
         <activity android:name=".views.WelcomeScreenActivity">
             <intent-filter>

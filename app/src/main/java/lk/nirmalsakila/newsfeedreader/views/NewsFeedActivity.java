@@ -57,7 +57,7 @@ public class NewsFeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news_feed);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setPopupTheme(R.style.AppTheme_PopupOverlay);
+        toolbar.setPopupTheme(darkThemeEnabled ? R.style.AppThemeDark_PopupOverlay : R.style.AppTheme_PopupOverlay);
         toolbar.setTitle(getIntent().getStringExtra(globalClass.TAG_SERVICE_TITLE));
         setSupportActionBar(toolbar);
 

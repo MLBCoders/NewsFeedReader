@@ -138,7 +138,10 @@ public class SettingsActivity extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        globalClass = (GlobalClass) this.getApplication();
+        globalClass = (GlobalClass) this.getApplication().getApplicationContext();
+        Log.d("FEEED","setting : " + globalClass.isDarkThemeEnabled());
+//        setTheme(globalClass.getAppThemeId());
+        setTheme(globalClass.isDarkThemeEnabled()? R.style.AppThemeDark : R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setupActionBar();
     }
@@ -158,7 +161,7 @@ public class SettingsActivity extends PreferenceActivity {
         bar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                SettingsActivity.super.onBackPressed();
             }
         });
     }

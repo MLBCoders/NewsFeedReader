@@ -56,6 +56,7 @@ public class RssFeedActivity extends AppCompatActivity {
         toolbar.setPopupTheme(darkThemeEnabled ? R.style.AppThemeDark_PopupOverlay : R.style.AppTheme_PopupOverlay);
         toolbar.setTitle(getIntent().getStringExtra(globalClass.TAG_SERVICE_TITLE));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mRecyclerView = findViewById(R.id.rssFeedRecyclerView);
         mSwipeLayout = findViewById(R.id.rssFeedSwipeRefreshLayout);

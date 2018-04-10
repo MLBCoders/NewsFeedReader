@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setPopupTheme(R.style.AppTheme_PopupOverlay);
+        toolbar.setPopupTheme(globalClass.isDarkThemeEnabled() ?R.style.AppThemeDark_PopupOverlay :R.style.AppTheme_PopupOverlay);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.

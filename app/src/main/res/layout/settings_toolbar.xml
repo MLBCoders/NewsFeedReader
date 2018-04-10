@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:minHeight="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
+    android:theme="@style/AppThemeDark"
     app:navigationIcon="?attr/homeAsUpIndicator"
     app:title="@string/action_settings"
     />

@@ -194,7 +194,6 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.NewsFe
     }
 
 
-    //    http://corochann.com/convert-between-bitmap-and-drawable-313.html
     private Bitmap drawableToBitmap(Drawable drawable) {
         Bitmap bitmap ;
 

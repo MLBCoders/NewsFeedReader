@@ -58,22 +58,26 @@
             android:src="@drawable/logo_medical_news_today" />
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/btnPhoneArena"
+    <!--<android.support.v7.widget.CardView-->
+        <!--android:id="@+id/btnPhoneArena"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_margin="@dimen/feed_selector_btn_margin"-->
+        <!--android:layout_weight="1"-->
+        <!--android:elevation="@dimen/feed_selector_btn_elevation"-->
+        <!--app:cardCornerRadius="@dimen/feed_selector_btn_radius">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/colorWhite"-->
+            <!--android:padding="10dp"-->
+            <!--android:src="@drawable/logo_phone_arena_2" />-->
+    <!--</android.support.v7.widget.CardView>-->
+    <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/feed_selector_btn_margin"
-        android:layout_weight="1"
-        android:elevation="@dimen/feed_selector_btn_elevation"
-        app:cardCornerRadius="@dimen/feed_selector_btn_radius">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorWhite"
-            android:padding="10dp"
-            android:src="@drawable/logo_phone_arena_2" />
-    </android.support.v7.widget.CardView>
+        android:layout_weight="1"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -60,6 +60,7 @@ public class NewsFeedActivity extends AppCompatActivity {
         toolbar.setPopupTheme(darkThemeEnabled ? R.style.AppThemeDark_PopupOverlay : R.style.AppTheme_PopupOverlay);
         toolbar.setTitle(getIntent().getStringExtra(globalClass.TAG_SERVICE_TITLE));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         newsFeedSwipeRefreshLayout = findViewById(R.id.newsFeedSwipeRefreshLayout);
         newsFeedRecyclerView = findViewById(R.id.newsFeedRecyclerView);

@@ -2,6 +2,7 @@
 package lk.nirmalsakila.newsfeedreader.views;
 
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         globalClass = (GlobalClass)this.getApplication();
         globalClass.setGlobalApplicationContext(this.getApplicationContext());
+        globalClass.setSharedPreferences(PreferenceManager.getDefaultSharedPreferences(getBaseContext()));
         setTheme(globalClass.getAppThemeId());
         darkThemeEnabled = globalClass.isDarkThemeEnabled();
 

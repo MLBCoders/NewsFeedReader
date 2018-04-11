@@ -10,12 +10,12 @@ import lk.nirmalsakila.newsfeedreader.R;
  * Created by rpa28 on 3/29/2018.
  */
 
-public class PreferenceManager {
+public class WelcomePreferenceManager {
 
     private Context context;
     private SharedPreferences sharedPreferences;
 
-    public PreferenceManager(Context context){
+    public WelcomePreferenceManager(Context context){
         this.context = context;
         getSharedPreference();
     }

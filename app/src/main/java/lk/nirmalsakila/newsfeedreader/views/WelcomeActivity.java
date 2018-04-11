@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 
 import lk.nirmalsakila.newsfeedreader.R;
 import lk.nirmalsakila.newsfeedreader.adapters.MpagerAdapter;
-import lk.nirmalsakila.newsfeedreader.adapters.PreferenceManager;
+import lk.nirmalsakila.newsfeedreader.adapters.WelcomePreferenceManager;
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,7 +31,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if(new PreferenceManager(this).checkPreference()){
+//        if(new WelcomePreferenceManager(this).checkPreference()){
 //            loadHome();
 //        }
 
@@ -117,7 +117,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
             case R.id.bnSkip:
                 loadHome();
-                new PreferenceManager(this).writePreference();
+                new WelcomePreferenceManager(this).writePreference();
                 break;
         }
     }
@@ -133,7 +133,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         if(next_slide < layouts.length){
             mPager.setCurrentItem(next_slide);
         }else{
-            new PreferenceManager(this).writePreference();
+            new WelcomePreferenceManager(this).writePreference();
             loadHome();
         }
     }

@@ -16,7 +16,7 @@
 
 
     <style name="AppThemeDark" parent="Theme.AppCompat">
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+        <item name="android:windowAnimationStyle">@style/WindowTransitionAnimation</item>
     </style>
 
 

@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import lk.nirmalsakila.newsfeedreader.R;
-import lk.nirmalsakila.newsfeedreader.adapters.PreferenceManager;
+import lk.nirmalsakila.newsfeedreader.adapters.WelcomePreferenceManager;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
     private static  int SPLASH_TIME_OUT = 4000;
@@ -19,7 +19,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent homeIntent;
-                if(new PreferenceManager(WelcomeScreenActivity.this.getApplicationContext()).checkPreference()){
+                if(new WelcomePreferenceManager(WelcomeScreenActivity.this.getApplicationContext()).checkPreference()){
                     homeIntent = new Intent(WelcomeScreenActivity.this, MainActivity.class);
                 }else{
                     homeIntent = new Intent(WelcomeScreenActivity.this, WelcomeActivity.class);

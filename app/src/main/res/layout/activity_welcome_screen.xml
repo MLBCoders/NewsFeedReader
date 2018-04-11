@@ -19,7 +19,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/logo_one" />
+        android:src="@drawable/logo_rrs_reader" />
 
     <TextView
         android:layout_width="match_parent"

@@ -95,7 +95,20 @@ public class RssFeedActivity extends AppCompatActivity {
                 return true;
             } catch (Exception e) {
                 Log.e(globalClass.TAG, e.getLocalizedMessage());
-                snackBar = Snackbar.make(findViewById(R.id.activity_news_feed), getString(R.string.error_network_connection), Snackbar.LENGTH_INDEFINITE);
+
+            }
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean success) {
+            mSwipeLayout.setRefreshing(false);
+
+            if (success) {
+                // Fill RecyclerView
+               mRecyclerView.setAdapter(new RssFeedListItemAdapter(mFeedModelList,globalClass.getGlobalApplicationContext()));
+            } else {
+                snackBar = Snackbar.make(findViewById(R.id.activity_rss_feed), getString(R.string.error_network_connection), Snackbar.LENGTH_INDEFINITE);
 
                 snackBar.setAction("Connect", new View.OnClickListener() {
                     @Override
@@ -109,21 +122,6 @@ public class RssFeedActivity extends AppCompatActivity {
                 TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setTextColor(Color.WHITE);
                 snackBar.show();
-            }
-            return false;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean success) {
-            mSwipeLayout.setRefreshing(false);
-
-            if (success) {
-                // Fill RecyclerView
-               mRecyclerView.setAdapter(new RssFeedListItemAdapter(mFeedModelList,globalClass.getGlobalApplicationContext()));
-            } else {
-                Toast.makeText(RssFeedActivity.this,
-                        "Enter a valid Rss feed url",
-                        Toast.LENGTH_LONG).show();
             }
         }
     }

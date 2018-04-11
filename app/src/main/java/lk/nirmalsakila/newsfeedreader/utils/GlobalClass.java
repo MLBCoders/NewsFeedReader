@@ -12,6 +12,7 @@ public class GlobalClass extends Application {
     public final String TAG = "NewsFeedReader";
     public final String TAG_SERVICE_TYPE = "service_type";
     public final String TAG_SERVICE_TITLE = "service_title";
+    public final String TAG_SERVICE_CATEGORY = "service_category";
 
     public String KEY_APP_THEME;
     public String KEY_DARK_THEME_ENABLED;

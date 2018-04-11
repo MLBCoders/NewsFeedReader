@@ -34,22 +34,24 @@ public class NewsFragment extends Fragment {
         globalClass = (GlobalClass)this.getActivity().getApplication();
 
         HashMap<Integer,String[]>  feedSelectorButtons = new HashMap<>();
-        feedSelectorButtons.put(R.id.btnCNNNews,new String[]{"cnn","CNN News"});
-        feedSelectorButtons.put(R.id.btnBBCNews,new String[]{"bbc-news","BBC News"});
-        feedSelectorButtons.put(R.id.btnABCNews,new String[]{"abc-news","ABC News"});
+        feedSelectorButtons.put(R.id.btnCNNNews,new String[]{"cnn","CNN News","everything"});
+        feedSelectorButtons.put(R.id.btnBBCNews,new String[]{"bbc-news","BBC News","everything"});
+        feedSelectorButtons.put(R.id.btnABCNews,new String[]{"abc-news","ABC News","everything"});
 //        feedSelectorButtons.put(R.id.btnNewYorkTimes,new String[]{"the-new-york-times","The New York Times"});
-        feedSelectorButtons.put(R.id.btnNews24,new String[]{"news24","News 24"});
+        feedSelectorButtons.put(R.id.btnNews24,new String[]{"news24","News 24","everything"});
 
         for (Map.Entry<Integer,String[]> entry : feedSelectorButtons.entrySet()){
             int btnId = entry.getKey();
             final String feedType = entry.getValue()[0];
             final String feedTitle = entry.getValue()[1];
+            final String feeCategory = entry.getValue()[2];
 
             rootView.findViewById(btnId).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), NewsFeedActivity.class);
                     intent.putExtra(globalClass.TAG_SERVICE_TYPE, feedType);
+                    intent.putExtra(globalClass.TAG_SERVICE_CATEGORY, feeCategory);
                     intent.putExtra(globalClass.TAG_SERVICE_TITLE, feedTitle);
                     NewsFragment.this.startActivity(intent);
                 }

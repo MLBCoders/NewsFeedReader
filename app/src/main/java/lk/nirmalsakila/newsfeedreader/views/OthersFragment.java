@@ -35,19 +35,21 @@ public class OthersFragment extends Fragment {
         globalClass = (GlobalClass) this.getActivity().getApplication();
 
         HashMap<Integer, String[]> feedSelectorButtons = new HashMap<>();
-        feedSelectorButtons.put(R.id.btnEngadget, new String[]{"engadget", "ENGADGET"});
-        feedSelectorButtons.put(R.id.btnMedicalNewsToday, new String[]{"medical-news-today", "Medical News Today"});
+        feedSelectorButtons.put(R.id.btnEngadget, new String[]{"engadget", "ENGADGET","everything"});
+        feedSelectorButtons.put(R.id.btnMedicalNewsToday, new String[]{"medical-news-today", "Medical News Today","everything"});
 
         for (Map.Entry<Integer, String[]> entry : feedSelectorButtons.entrySet()) {
             int btnId = entry.getKey();
             final String feedType = entry.getValue()[0];
             final String feedTitle = entry.getValue()[1];
+            final String feeCategory = entry.getValue()[2];
 
             rootView.findViewById(btnId).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), NewsFeedActivity.class);
                     intent.putExtra(globalClass.TAG_SERVICE_TYPE, feedType);
+                    intent.putExtra(globalClass.TAG_SERVICE_CATEGORY, feeCategory);
                     intent.putExtra(globalClass.TAG_SERVICE_TITLE, feedTitle);
                     OthersFragment.this.startActivity(intent);
                 }

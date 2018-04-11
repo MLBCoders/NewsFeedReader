@@ -117,7 +117,6 @@ public class RssFeedListItemAdapter extends RecyclerView.Adapter<RssFeedListItem
         return mRssFeedModels.size();
     }
 
-    //    http://corochann.com/convert-between-bitmap-and-drawable-313.html
     public Bitmap drawableToBitmap(Drawable drawable) {
         Bitmap bitmap ;
 

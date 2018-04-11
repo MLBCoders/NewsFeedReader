@@ -76,7 +76,8 @@ public class NewsFeedActivity extends AppCompatActivity {
         gson = gsonBuilder.create();
 
         String service = getIntent().getStringExtra(globalClass.TAG_SERVICE_TYPE);
-        endpoint = getServiceEndpoint(service);
+        String category = getIntent().getStringExtra(globalClass.TAG_SERVICE_CATEGORY);
+        endpoint = getServiceEndpoint(service,category);
         Log.d(globalClass.TAG,"Service endpoint : " + endpoint);
 
         newsFeedSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -87,8 +88,8 @@ public class NewsFeedActivity extends AppCompatActivity {
         });
     }
 
-    private String getServiceEndpoint(String serviceType) {
-        return "https://newsapi.org/v2/" + "everything" + "?sources=" + serviceType + "&apiKey=1c8530ec3214460bbfc19f8db75c28bb";
+    private String getServiceEndpoint(String serviceType,String category) {
+        return "https://newsapi.org/v2/" + category + "?sources=" + serviceType + "&apiKey=1c8530ec3214460bbfc19f8db75c28bb";
     }
 
     private void fetchPosts(String ENDPOINT) {

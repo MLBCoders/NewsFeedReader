@@ -34,20 +34,22 @@ public class SportsFragment extends Fragment {
         globalClass = (GlobalClass)this.getActivity().getApplication();
 
         HashMap<Integer, String[]> feedSelectorButtons = new HashMap<>();
-        feedSelectorButtons.put(R.id.btnBBCSports, new String[]{"bbc-sports", "BBC Sports"});
-        feedSelectorButtons.put(R.id.btnESPN, new String[]{"espn", "ESPN"});
-        feedSelectorButtons.put(R.id.btnESPNCric, new String[]{"espn-cric-info", "ESPN Cric Info"});
+        feedSelectorButtons.put(R.id.btnBBCSports, new String[]{"bbc-sport", "BBC Sports","top-headlines"});
+        feedSelectorButtons.put(R.id.btnESPN, new String[]{"espn", "ESPN","top-headlines"});
+        feedSelectorButtons.put(R.id.btnESPNCric, new String[]{"espn-cric-info", "ESPN Cric Info","everything"});
 
         for (Map.Entry<Integer, String[]> entry : feedSelectorButtons.entrySet()) {
             int btnId = entry.getKey();
             final String feedType = entry.getValue()[0];
             final String feedTitle = entry.getValue()[1];
+            final String feeCategory = entry.getValue()[2];
 
             rootView.findViewById(btnId).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), NewsFeedActivity.class);
                     intent.putExtra(globalClass.TAG_SERVICE_TYPE, feedType);
+                    intent.putExtra(globalClass.TAG_SERVICE_CATEGORY, feeCategory);
                     intent.putExtra(globalClass.TAG_SERVICE_TITLE, feedTitle);
                     SportsFragment.this.startActivity(intent);
                 }

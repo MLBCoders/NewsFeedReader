@@ -89,7 +89,7 @@ public class NewsFeedActivity extends AppCompatActivity {
     }
 
     private String getServiceEndpoint(String serviceType,String category) {
-        return "https://newsapi.org/v2/" + category + "?sources=" + serviceType + "&apiKey=1c8530ec3214460bbfc19f8db75c28bb";
+        return "https://newsapi.org/v2/" + category + "?sources=" + serviceType + "&apiKey=" + globalClass.NEWS_API_KEY;
     }
 
     private void fetchPosts(String ENDPOINT) {

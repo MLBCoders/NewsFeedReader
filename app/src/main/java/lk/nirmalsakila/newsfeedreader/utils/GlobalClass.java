@@ -27,6 +27,8 @@ public class GlobalClass extends Application {
     private boolean dataSaverEnabled;
     private boolean linkOpenInDefaultBrowser;
 
+    public String NEWS_API_KEY = "ENTER YOUR NEWS.ORG API KEY HERE";
+
     public SharedPreferences getSharedPreferences() {
         return sharedPreferences;
     }
